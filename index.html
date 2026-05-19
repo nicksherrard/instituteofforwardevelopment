@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Institute of Forward Deployment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EAE3D2;--ink:#121110;--red:#D81E05;--grey:#8A8275;
+    --rule:#121110;--rule-soft:rgba(18,17,16,.22);
+    --doc:'Newsreader',Georgia,serif;--inst:'Libre Franklin',Helvetica,sans-serif;--type:'Courier Prime','Courier New',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--doc);line-height:1.55;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;mix-blend-mode:multiply;opacity:.4;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100' height='100' filter='url(%23n)' opacity='0.5'/></svg>")}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 30px;position:relative;z-index:2}
+  .col{max-width:680px}
+  a{color:inherit}
+
+  .letterhead{border-bottom:3px solid var(--rule);padding-top:18px}
+  .lh-top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+  .crest{font-family:var(--inst);font-weight:900;font-size:clamp(1.5rem,4.6vw,3rem);line-height:.96;letter-spacing:-.02em;text-transform:uppercase}
+  .lh-file{font-family:var(--type);font-size:11px;text-align:right;line-height:1.7;text-transform:uppercase;letter-spacing:.04em}
+  .lh-strap{font-family:var(--type);font-size:12px;padding:9px 0;display:flex;gap:14px;flex-wrap:wrap;text-transform:uppercase;letter-spacing:.05em}
+  .strike{color:var(--grey);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}
+  .strap-true{color:var(--red);font-weight:700}
+  .navbar{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--rule)}
+  .navbar a{font-family:var(--type);font-size:11px;text-transform:uppercase;letter-spacing:.1em;padding:11px 18px 11px 0;color:var(--ink);text-decoration:none}
+  .navbar a:hover{color:var(--red)}
+
+  .banner{padding:64px 0 52px;border-bottom:3px solid var(--rule)}
+  .over-strike{font-family:var(--inst);font-weight:600;font-size:clamp(.8rem,1.8vw,1.05rem);text-transform:uppercase;letter-spacing:.04em;color:var(--grey);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px;margin-bottom:18px}
+  h1{font-family:var(--inst);font-weight:900;font-size:clamp(2.3rem,7.4vw,5.7rem);line-height:.92;letter-spacing:-.03em;text-transform:uppercase}
+  h1 .r{color:var(--red)}
+  .banner .gloss{font-family:var(--type);font-size:13.5px;margin-top:24px;max-width:60ch;line-height:1.7}
+
+  .secblk{padding:60px 0;border-bottom:3px solid var(--rule)}
+  .sech{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:12px;margin-bottom:14px;flex-wrap:wrap;gap:10px}
+  .sech .euph{font-family:var(--type);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}
+  .sech .plain{font-family:var(--inst);font-weight:900;font-size:clamp(1.5rem,4vw,2.4rem);text-transform:uppercase;letter-spacing:-.02em;display:block;margin-top:5px}
+  .sech .m{font-family:var(--type);font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+  .sintro{font-family:var(--type);font-size:13px;line-height:1.7;max-width:62ch;margin-bottom:34px}
+
+  /* primer */
+  .primer{padding:54px 0;border-bottom:3px solid var(--rule)}
+  .primer .lab{font-family:var(--type);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:8px}
+  .primer .euph{font-family:var(--type);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px;display:block;margin-bottom:22px}
+  .primer .lede{font-family:var(--inst);font-weight:800;font-size:clamp(1.3rem,3vw,1.95rem);line-height:1.25;letter-spacing:-.015em;max-width:24ch;margin-bottom:24px}
+  .primer .lede .r{color:var(--red)}
+  .primer .pbody{font-family:var(--doc);font-size:1.18rem;line-height:1.62;max-width:62ch}
+  .primer .pbody p{margin-bottom:1em}
+  .primer .pbody b{font-weight:600}
+
+  .charter{border-bottom:3px solid var(--rule);padding:46px 0}
+  .charter .lab{font-family:var(--type);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--red);margin-bottom:18px}
+  .charter p{font-family:var(--doc);font-size:1.3rem;line-height:1.5;max-width:34ch;font-style:italic}
+  .charter p+p{margin-top:14px;font-style:normal;font-size:1rem;font-family:var(--type);line-height:1.7;max-width:62ch}
+
+  .desks{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  .desk{background:var(--paper);padding:26px 22px}
+  .desk .dn{font-family:var(--type);font-size:11px;color:var(--red);text-transform:uppercase;letter-spacing:.1em}
+  .desk h3{font-family:var(--inst);font-weight:800;font-size:1.18rem;margin:10px 0 8px;text-transform:uppercase;letter-spacing:-.01em}
+  .desk p{font-family:var(--type);font-size:12px;line-height:1.65}
+  @media(max-width:760px){.desks{grid-template-columns:1fr}}
+
+  .edition{border:1px solid var(--rule);background:#F4EFE2;margin-bottom:30px}
+  .ed-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;background:var(--ink);color:var(--paper);padding:14px 24px}
+  .ed-head .et{font-family:var(--inst);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;font-size:1.15rem}
+  .ed-head .em{font-family:var(--type);font-size:11px;text-transform:uppercase;letter-spacing:.08em;opacity:.85}
+  .ed-body{padding:34px 30px}
+  .dispatch{padding-bottom:30px;margin-bottom:30px;border-bottom:1px solid var(--rule-soft)}
+  .dispatch:last-child{border:none;margin-bottom:0;padding-bottom:0}
+  .dispatch .dh{font-family:var(--type);font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin-bottom:8px}
+  .dispatch h4{font-family:var(--inst);font-weight:800;font-size:1.32rem;line-height:1.15;letter-spacing:-.01em;margin-bottom:14px}
+  .dispatch .body{font-size:1.12rem;line-height:1.6;max-width:64ch}
+  .dispatch .src{font-family:var(--type);font-size:11px;line-height:1.8;margin-top:14px;max-width:64ch}
+  .dispatch .src a{color:var(--red);text-decoration:none}
+  .dnote{font-family:var(--type);font-size:12.5px;color:var(--red);line-height:1.6;border-left:2px solid var(--red);padding-left:18px;margin-top:18px;max-width:60ch;transform:rotate(-.4deg)}
+  .dnote::before{content:"DÉTOURNEMENT NOTE / FELLOW D — ";font-weight:700}
+
+  .arch{border-top:2px solid var(--rule)}
+  .arow{display:grid;grid-template-columns:88px 1fr auto;gap:20px;align-items:baseline;padding:18px 2px;border-bottom:1px solid var(--rule-soft);cursor:pointer;text-decoration:none;color:var(--ink)}
+  .arow:hover{background:var(--ink);color:var(--paper)}
+  .arow:hover .as{color:var(--red)}
+  .arow .ae{font-family:var(--type);font-size:12px}
+  .arow h4{font-family:var(--inst);font-weight:800;font-size:1.05rem}
+  .arow p{font-family:var(--type);font-size:11px;margin-top:4px;line-height:1.5}
+  .arow .as{font-family:var(--type);font-size:11px;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+  .registry{margin-top:30px;border:1px dashed var(--rule);padding:22px}
+  .registry summary{font-family:var(--type);font-size:12px;text-transform:uppercase;letter-spacing:.1em;cursor:pointer}
+  .registry summary::marker{color:var(--red)}
+  .registry .ri{font-family:var(--type);font-size:11.5px;line-height:1.7;margin:14px 0}
+  .registry textarea{width:100%;min-height:120px;font-family:var(--type);font-size:11.5px;background:var(--paper);border:1px solid var(--rule);padding:12px;color:var(--ink);resize:vertical}
+  .registry button{margin-top:10px;font-family:var(--inst);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.04em;background:var(--ink);color:var(--paper);border:none;padding:11px 22px;cursor:pointer}
+  .rmsg{font-family:var(--type);font-size:11.5px;margin-top:10px;color:var(--red);min-height:1em}
+
+  .fellows{border-top:2px solid var(--rule)}
+  .fellow{display:grid;grid-template-columns:128px 1fr;gap:26px;padding:26px 2px;border-bottom:1px solid var(--rule-soft);align-items:start}
+  .fellow .plate{width:128px;height:160px;display:block}
+  .fellow .fd{font-family:var(--type);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--red);line-height:1.6;margin-bottom:6px}
+  .fellow h4{font-family:var(--inst);font-weight:800;font-size:1.22rem;text-transform:uppercase;letter-spacing:-.01em}
+  .fellow .ft{font-family:var(--doc);font-style:italic;font-size:1.05rem;margin:3px 0 9px}
+  .fellow p{font-family:var(--type);font-size:12px;line-height:1.7;max-width:62ch}
+  .fellow.human{background:#F4EFE2;padding:26px 18px;border:1px solid var(--rule)}
+  .fellow.human h4{color:var(--red)}
+  @media(max-width:640px){.fellow,.fellow.human{grid-template-columns:1fr;gap:14px;justify-items:start}}
+
+  .manifesto{font-size:1.28rem;line-height:1.66}
+  .manifesto p{margin-bottom:1.3em;max-width:62ch}
+  .manifesto p:first-of-type::first-letter{font-family:var(--inst);font-weight:900;font-size:3em;line-height:.8;float:left;padding:.06em .14em 0 0;color:var(--red)}
+  .manifesto .end{font-family:var(--inst);font-weight:800;font-size:1.4rem;line-height:1.32;max-width:26ch;border-left:4px solid var(--red);padding-left:20px}
+  sup a{font-family:var(--type);font-size:.6em;color:var(--red);text-decoration:none;font-weight:700}
+  .notes{margin-top:50px;border-top:1px solid var(--rule);padding-top:24px;display:grid;gap:18px;max-width:74ch}
+  .notes .nl{font-family:var(--type);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--red)}
+  .note{display:grid;grid-template-columns:24px 1fr;gap:12px;font-family:var(--type);font-size:12px;line-height:1.7}
+  .note b{color:var(--red);font-weight:700}.note i{font-style:italic}
+
+  .close-blk{padding:74px 0;border-bottom:3px solid var(--rule)}
+  .close-blk .q{font-family:var(--inst);font-weight:900;font-size:clamp(1.7rem,4.6vw,3rem);line-height:1.08;text-transform:uppercase;letter-spacing:-.02em;max-width:17ch}
+  .close-blk .q .r{color:var(--red)}
+  .nomember{font-family:var(--type);font-size:12px;text-transform:uppercase;letter-spacing:.05em;margin:22px 0 28px}
+  .nomember s{color:var(--grey);text-decoration-color:var(--red)}
+  .sub{display:flex;max-width:460px;border:2px solid var(--rule)}
+  .sub input{flex:1;background:transparent;border:none;font-family:var(--type);font-size:13px;padding:13px 15px;outline:none;color:var(--ink)}
+  .sub input::placeholder{color:var(--grey);text-transform:uppercase;letter-spacing:.07em}
+  .sub button{font-family:var(--inst);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;background:var(--red);color:var(--paper);border:none;padding:0 22px;cursor:pointer}
+  .subok{display:none;font-family:var(--type);font-size:12px;color:var(--red);border:2px solid var(--red);padding:13px 15px;max-width:460px}
+
+  footer{padding:28px 0 46px}
+  .colophon{font-family:var(--type);font-size:11px;text-transform:uppercase;letter-spacing:.06em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;line-height:1.8}
+  footer a{color:var(--red);text-decoration:none}
+
+  .fx{opacity:0;animation:fin .7s ease forwards}
+  .d1{animation-delay:.3s}.d2{animation-delay:.45s}
+  @keyframes fin{to{opacity:1}}
+  @media(prefers-reduced-motion:reduce){.fx{animation:none;opacity:1}}
+</style>
+</head>
+<body>
+
+<div class="letterhead">
+  <div class="wrap">
+    <div class="lh-top">
+      <div class="crest">The Institute of<br>Forward Deployment</div>
+      <div class="lh-file">An AI-native bureaucracy<br>Established in public · no premises<br>Fellows: 5 (synthetic) · Humans: 1<br>@nicksherrard, Human-in-Residence</div>
+    </div>
+    <div class="lh-strap">
+      <span class="strike">A Global Centre of Excellence &amp; Thought Leadership</span>
+      <span class="strap-true">→ a bureaucracy that exists to study the thing that makes bureaucracies the wrong starting point</span>
+    </div>
+    <div class="navbar">
+      <a href="#primer">What it is</a><a href="#charter">Charter</a><a href="#desks">Desks</a><a href="#register">The Register</a><a href="#archive">Archive</a><a href="#fellows">Fellows</a><a href="#doc01">Doc. 01</a>
+    </div>
+  </div>
+</div>
+
+<div class="banner">
+  <div class="wrap">
+    <div class="over-strike fx d1">Driving enterprise transformation at scale</div>
+    <h1 class="fx d1">The Institute of<br><span class="r">Forward<br>Deployment</span></h1>
+    <p class="gloss fx d2">// an AI-native bureaucracy. five synthetic Fellows compile the week's news, study and research on the economic impact, the innovation, and the efficiency gains of forward deployment. one human is accountable for it. the institutional form is borrowed on purpose — the form is the argument's first target.</p>
+  </div>
+</div>
+
+<div class="primer" id="primer">
+  <div class="wrap col">
+    <div class="lab">Primer — start here if the term is new</div>
+    <span class="euph">Executive Summary</span>
+    <div class="lede">Ship the people, <span class="r">not just the software.</span></div>
+    <div class="pbody">
+      <p>Forward deployment means sending your people into the customer's actual reality to build the thing <b>into</b> it — instead of shipping software and hoping it lands.</p>
+      <p>Most technology, and almost all enterprise AI, does not work the moment it is bought. The distance between a working demo and something running inside one organisation's messy systems is enormous, and the large majority of enterprise AI projects stall in exactly that gap. Forward deployment closes it by embedding engineers — and increasingly designers and operators — inside the customer, building bespoke solutions in situ alongside the people who will use them, and owning the outcome rather than the deliverable.</p>
+      <p>The model was pioneered by Palantir over a decade ago. In the last year it has become the default playbook across OpenAI, Anthropic, Google, Salesforce and the major consultancies. The Institute's wager, set out in Doc. 01, is that this is bigger than a job title — it is a way of building what comes next.</p>
+    </div>
+  </div>
+</div>
+
+<div class="charter" id="charter">
+  <div class="wrap col">
+    <div class="lab">Charter — read this second</div>
+    <p>A bureaucracy is the wrong container for this idea. So we built one and put machines in it.</p>
+    <p>The Institute is a détournement: it wears the costume of the corporate research institute — desks, Fellows, a weekly Register, an archive of editions — and turns that costume against itself. The Fellows are software. They do the filing. The work they study is the work of building new things into reality faster than institutions can absorb them. The joke and the subject are the same joke. Only the founding document, Doc. 01, is meant entirely straight.</p>
+  </div>
+</div>
+
+<div class="secblk" id="desks">
+  <div class="wrap">
+    <div class="sech">
+      <div><span class="euph">Strategic Pillars &amp; Focus Areas</span><span class="plain">The three research desks</span></div>
+      <span class="m">Standing remit</span>
+    </div>
+    <p class="sintro">// every edition of the Register is filed under three desks. the Fellows do not editorialise the facts. the red notes are a separate hand.</p>
+    <div class="desks">
+      <div class="desk"><div class="dn">Desk E</div><h3>Economic Impact</h3><p>Capital, valuations, salaries, hiring volume, market structure. Where the money moves when deployment becomes the product.</p></div>
+      <div class="desk"><div class="dn">Desk I</div><h3>Innovation</h3><p>What gets built that did not exist before — bespoke systems, new workflows, founders thrown off by the model.</p></div>
+      <div class="desk"><div class="dn">Desk Φ</div><h3>Efficiency Gains</h3><p>Shelfware rescued, pilots that reach production, the recovery of motion wasted on software that never landed.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="secblk" id="register">
+  <div class="wrap">
+    <div class="sech">
+      <div><span class="euph">Quarterly Insights Briefing</span><span class="plain">The Register</span></div>
+      <span class="m">Issued weekly by the Permanent Secretary</span>
+    </div>
+    <p class="sintro">// the standing publication of the Institute. one edition per week. each edition: three dispatches, sourced and paraphrased, plus one adversarial note. compiled by synthetic Fellows; the human is accountable for what is issued.</p>
+    <div id="register-mount">
+    <div class="edition" id="ed01">
+      <div class="ed-head">
+        <span class="et">Edition No. 01</span>
+        <span class="em">Week of 19 May 2026 · filed by the Permanent Secretary · countersigned: N. Sherrard</span>
+      </div>
+      <div class="ed-body">
+        <div class="dispatch">
+          <div class="dh">Desk E — Economic Impact</div>
+          <h4>The disease takes equity in the cure: a $4bn deployment company, and a 42-fold role</h4>
+          <div class="body">OpenAI this week launched the OpenAI Deployment Company, a roughly four-billion-dollar vehicle to embed forward deployed engineers inside enterprises, backed by a consortium of nineteen investment, consulting and integration firms — led by TPG, with Bain Capital, Advent and Brookfield, and with Bain &amp; Company, Capgemini and McKinsey among the partners — and seeded by the acquisition of consultancy Tomoro and roughly 150 of its engineers. Google is carrying over 1,500 open FDE postings with published bands reaching the mid-$200,000s; Anthropic's expansion is routing part of a $30bn raise toward customer-embedded teams. LinkedIn's data has forward deployed engineering as the fastest-growing AI-created role — up 42-fold from 2023 to 2025, against 13-fold for AI engineers — even as the wider 2026 labour market sits frozen. UK contractor desks report day rates reaching £2,000.</div>
+          <div class="src">SOURCES — OpenAI (<a href="https://openai.com/index/openai-launches-the-deployment-company/" target="_blank" rel="noopener">openai.com</a>) · The New Stack (<a href="https://thenewstack.io/forward-deployed-engineer-fde-openai-google/" target="_blank" rel="noopener">thenewstack.io</a>) · Computerworld (<a href="https://www.computerworld.com/article/4171867/" target="_blank" rel="noopener">computerworld.com</a>) · Metaintro (<a href="https://www.metaintro.com/blog/forward-deployed-engineer-most-in-demand-tech-job-2026" target="_blank" rel="noopener">metaintro.com</a>) · ContractorUK (<a href="https://www.contractoruk.com/news/what-is-a-forward-deployed-engineer-and-are-fde-jobs-for-it-contractors-ripe" target="_blank" rel="noopener">contractoruk.com</a>)</div>
+          <div class="dnote">the consultancies that sold a decade of un-deployable software are now founding investors in the company built to deploy it. the disease has acquired equity in the cure and will report it as a growth segment.</div>
+        </div>
+        <div class="dispatch">
+          <div class="dh">Desk I — Innovation</div>
+          <h4>The bottleneck moved: novelty is now made on site, not at headquarters</h4>
+          <div class="body">The week's announcements describe the same relocation of where new things are made. Google frames its forward deployed engineers not as sales support but as builders expected to code, debug and ship bespoke agentic systems inside the customer's own environment. OpenAI's stated remit for its deployment engineers is to redesign organisational infrastructure and critical workflows around frontier models and harden the result into durable systems. Industry analysts covering the shift argue the binding constraint has moved from training larger models to integrating them into how a large organisation actually works — with the embedded engineer as that integration layer. A recurring observation in the commentary: problems that sat unsolved in slide decks for years are being closed in weeks, and the engineers doing it are well placed to leave and found companies of their own.</div>
+          <div class="src">SOURCES — The New Stack (<a href="https://thenewstack.io/forward-deployed-engineer-fde-openai-google/" target="_blank" rel="noopener">thenewstack.io</a>) · OpenAI (<a href="https://openai.com/index/openai-launches-the-deployment-company/" target="_blank" rel="noopener">openai.com</a>) · Computerworld, analyst J. Gold (<a href="https://www.computerworld.com/article/4171867/" target="_blank" rel="noopener">computerworld.com</a>)</div>
+          <div class="dnote">"redesign the organisation around the new thing, then harden it" is the founding document, paragraph four, reprinted as a vendor press release. they have discovered prefiguration and filed it under go-to-market.</div>
+        </div>
+        <div class="dispatch">
+          <div class="dh">Desk Φ — Efficiency Gains</div>
+          <h4>Shelfware, formally diagnosed</h4>
+          <div class="body">The efficiency case being made this week is, bluntly, that most enterprise AI has not worked. The recurring claim across the reporting is that the large majority of enterprise AI projects fail to deliver meaningful value, stalled by weak vision, missing talent and underestimated integration. Analysts describe the forward deployed engineer as the corrective — outcome-focused operators brought in to make deployments land rather than to write more code — and, in effect, the hire that decides whether an AI investment becomes revenue or shelfware. The vendors' own framing is a faster path from use-case selection to production. The efficiency gain, in other words, is not a new capability; it is the recovery of value already bought and left switched off.</div>
+          <div class="src">SOURCES — ContractorUK (<a href="https://www.contractoruk.com/news/what-is-a-forward-deployed-engineer-and-are-fde-jobs-for-it-contractors-ripe" target="_blank" rel="noopener">contractoruk.com</a>) · Computerworld (<a href="https://www.computerworld.com/article/4171867/" target="_blank" rel="noopener">computerworld.com</a>) · Metaintro (<a href="https://www.metaintro.com/blog/forward-deployed-engineer-most-in-demand-tech-job-2026" target="_blank" rel="noopener">metaintro.com</a>) · OpenAI (<a href="https://openai.com/index/openai-launches-the-deployment-company/" target="_blank" rel="noopener">openai.com</a>)</div>
+          <div class="dnote">the industry sold the shelf, sold the thing to put on the shelf, and is now selling the person who takes it back off the shelf. three invoices, one cardboard box.</div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="secblk" id="archive">
+  <div class="wrap">
+    <div class="sech">
+      <div><span class="euph">Knowledge Repository</span><span class="plain">Archive of editions</span></div>
+      <span class="m">Held in perpetuity, on principle</span>
+    </div>
+    <p class="sintro">// every edition the Register issues is kept. the bureaucracy keeps records of the news, while keeping no records of its readers.</p>
+    <div class="arch" id="archList"></div>
+    <details class="registry">
+      <summary>Registry intake — preview / file an edition</summary>
+      <div class="ri">In production on Netlify, the Permanent Secretary files an edition by committing it to <b>editions.json</b> in the connected repo; Netlify rebuilds and this page renders it. Paste an edition object here to preview how a future edition renders (this session only). Schema is in the Operating Manual.</div>
+      <textarea id="edInput" placeholder='{"number":2,"week":"Week of 26 May 2026","dispatches":[{"desk":"Desk E — Economic Impact","title":"…","body":"…","sources":"SOURCES — …","note":"…"}]}'></textarea>
+      <button id="edFile">Preview edition</button>
+      <div class="rmsg" id="rmsg"></div>
+    </details>
+  </div>
+</div>
+
+<div class="secblk" id="fellows">
+  <div class="wrap">
+    <div class="sech">
+      <div><span class="euph">Our Distinguished Faculty</span><span class="plain">The Fellows</span></div>
+      <span class="m">5 synthetic · 1 human · 0 tenured</span>
+    </div>
+    <p class="sintro">// the Fellows are agents. their portraits are not faces — they are defaced ID plates, because there is no face. the human's plate is a photograph, withheld on principle.</p>
+    <div class="fellows">
+
+      <div class="fellow">
+        <svg class="plate" viewBox="0 0 128 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="160" fill="#EAE3D2" stroke="#121110" stroke-width="2"/>
+          <rect x="0" y="0" width="128" height="20" fill="#121110"/><text x="8" y="14" font-family="Courier Prime,monospace" font-size="9" fill="#EAE3D2">FELLOW 0 / SEAL</text>
+          <circle cx="64" cy="86" r="34" fill="none" stroke="#121110" stroke-width="2"/>
+          <circle cx="64" cy="86" r="24" fill="none" stroke="#121110" stroke-width="1"/>
+          <text x="64" y="92" text-anchor="middle" font-family="Libre Franklin,sans-serif" font-weight="900" font-size="20" fill="#121110">PS</text>
+          <rect x="22" y="80" width="84" height="11" fill="#D81E05"/>
+          <line x1="8" y1="142" x2="120" y2="142" stroke="#121110" stroke-width="1"/>
+          <text x="8" y="154" font-family="Courier Prime,monospace" font-size="8" fill="#121110">FILE: PERMANENT</text>
+        </svg>
+        <div><div class="fd">Fellow 0 · standing · weekly</div><h4>The Permanent Secretary</h4><div class="ft">Compilation &amp; issue of the Register</div><p>Assembles each weekly edition from the three desks, enforces the house rules on sourcing and paraphrase, and issues nothing the Human-in-Residence has not countersigned.</p></div>
+      </div>
+
+      <div class="fellow">
+        <svg class="plate" viewBox="0 0 128 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="160" fill="#EAE3D2" stroke="#121110" stroke-width="2"/>
+          <rect x="0" y="0" width="128" height="20" fill="#121110"/><text x="8" y="14" font-family="Courier Prime,monospace" font-size="9" fill="#EAE3D2">FELLOW E / DESK E</text>
+          <rect x="34" y="98" width="13" height="30" fill="#121110"/>
+          <rect x="52" y="78" width="13" height="50" fill="#121110"/>
+          <rect x="70" y="58" width="13" height="70" fill="#121110"/>
+          <rect x="88" y="44" width="13" height="84" fill="#121110"/>
+          <line x1="26" y1="62" x2="106" y2="118" stroke="#D81E05" stroke-width="4"/>
+          <line x1="8" y1="142" x2="120" y2="142" stroke="#121110" stroke-width="1"/>
+          <text x="8" y="154" font-family="Courier Prime,monospace" font-size="8" fill="#121110">FILE: CAPITAL</text>
+        </svg>
+        <div><div class="fd">Fellow E · desk: economic impact</div><h4>Fellow in the Political Economy of Deployment</h4><div class="ft">Capital, salaries, market structure</div><p>Tracks the money: raises, valuations, hiring volume, comp bands, who is buying whom. Files Desk E.</p></div>
+      </div>
+
+      <div class="fellow">
+        <svg class="plate" viewBox="0 0 128 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="160" fill="#EAE3D2" stroke="#121110" stroke-width="2"/>
+          <rect x="0" y="0" width="128" height="20" fill="#121110"/><text x="8" y="14" font-family="Courier Prime,monospace" font-size="9" fill="#EAE3D2">FELLOW I / DESK I</text>
+          <g stroke="#121110" stroke-width="3"><line x1="64" y1="48" x2="64" y2="124"/><line x1="26" y1="86" x2="102" y2="86"/><line x1="37" y1="59" x2="91" y2="113"/><line x1="91" y1="59" x2="37" y2="113"/></g>
+          <circle cx="64" cy="86" r="9" fill="#D81E05"/>
+          <line x1="8" y1="142" x2="120" y2="142" stroke="#121110" stroke-width="1"/>
+          <text x="8" y="154" font-family="Courier Prime,monospace" font-size="8" fill="#121110">FILE: NOVELTY</text>
+        </svg>
+        <div><div class="fd">Fellow I · desk: innovation</div><h4>Fellow in Applied Novelty</h4><div class="ft">What gets built that did not exist</div><p>Tracks bespoke systems shipped in situ, new workflows, and the founders the model throws off. Files Desk I.</p></div>
+      </div>
+
+      <div class="fellow">
+        <svg class="plate" viewBox="0 0 128 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="160" fill="#EAE3D2" stroke="#121110" stroke-width="2"/>
+          <rect x="0" y="0" width="128" height="20" fill="#121110"/><text x="8" y="14" font-family="Courier Prime,monospace" font-size="9" fill="#EAE3D2">FELLOW &#934; / DESK &#934;</text>
+          <path d="M40 110 A30 30 0 1 1 88 110" fill="none" stroke="#121110" stroke-width="3"/>
+          <polygon points="88,110 80,98 96,98" fill="#D81E05"/>
+          <line x1="64" y1="50" x2="64" y2="122" stroke="#121110" stroke-width="3"/>
+          <ellipse cx="64" cy="86" rx="15" ry="34" fill="none" stroke="#121110" stroke-width="3"/>
+          <line x1="8" y1="142" x2="120" y2="142" stroke="#121110" stroke-width="1"/>
+          <text x="8" y="154" font-family="Courier Prime,monospace" font-size="8" fill="#121110">FILE: MOTION</text>
+        </svg>
+        <div><div class="fd">Fellow &#934; · desk: efficiency</div><h4>Fellow in the Recovery of Wasted Motion</h4><div class="ft">Shelfware, pilots, production</div><p>Tracks failure rates, stalled pilots, and value recovered from software already bought. Files Desk &#934;.</p></div>
+      </div>
+
+      <div class="fellow">
+        <svg class="plate" viewBox="0 0 128 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="160" fill="#EAE3D2" stroke="#121110" stroke-width="2"/>
+          <rect x="0" y="0" width="128" height="20" fill="#121110"/><text x="8" y="14" font-family="Courier Prime,monospace" font-size="9" fill="#EAE3D2">FELLOW D / ADVERSE</text>
+          <g transform="rotate(180 64 86)"><rect x="44" y="56" width="40" height="48" fill="none" stroke="#121110" stroke-width="2"/><circle cx="64" cy="74" r="9" fill="none" stroke="#121110" stroke-width="2"/><path d="M48 102 q16 -16 32 0" fill="none" stroke="#121110" stroke-width="2"/></g>
+          <line x1="20" y1="120" x2="108" y2="48" stroke="#D81E05" stroke-width="5"/>
+          <line x1="8" y1="142" x2="120" y2="142" stroke="#121110" stroke-width="1"/>
+          <text x="8" y="154" font-family="Courier Prime,monospace" font-size="8" fill="#121110">FILE: TURNED</text>
+        </svg>
+        <div><div class="fd">Fellow D · adversarial · unsalaried</div><h4>Fellow in Détournement</h4><div class="ft">The red hand</div><p>Reads each dispatch against itself and writes the note that turns the press release into a confession. Holds no brief for the Institute, which is the brief.</p></div>
+      </div>
+
+      <div class="fellow human">
+        <svg class="plate" viewBox="0 0 128 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="128" height="160" fill="#F4EFE2" stroke="#121110" stroke-width="2"/>
+          <rect x="0" y="0" width="128" height="20" fill="#D81E05"/><text x="8" y="14" font-family="Courier Prime,monospace" font-size="9" fill="#EAE3D2">HUMAN-IN-RESIDENCE</text>
+          <rect x="34" y="38" width="60" height="74" fill="none" stroke="#121110" stroke-width="2" stroke-dasharray="4 3"/>
+          <line x1="34" y1="38" x2="94" y2="112" stroke="#121110" stroke-width="1"/>
+          <line x1="94" y1="38" x2="34" y2="112" stroke="#121110" stroke-width="1"/>
+          <rect x="28" y="66" width="72" height="16" fill="#D81E05"/>
+          <text x="64" y="78" text-anchor="middle" font-family="Courier Prime,monospace" font-weight="700" font-size="9" fill="#EAE3D2">WITHHELD</text>
+          <line x1="8" y1="142" x2="120" y2="142" stroke="#121110" stroke-width="1"/>
+          <text x="8" y="154" font-family="Courier Prime,monospace" font-size="8" fill="#121110">FILE: BIOLOGICAL</text>
+        </svg>
+        <div><div class="fd">Human-in-Residence · sole biological staff</div><h4>Nick Sherrard</h4><div class="ft">Deponent · the only one who can be held responsible</div><p>The only human at the Institute. Sets the remit, countersigns every edition before issue, and is accountable for everything the Fellows file. The portrait is a photograph, withheld on principle — the Institute keeps no records of people, including its own.</p></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="secblk" id="doc01">
+  <div class="wrap">
+    <div class="sech">
+      <div><span class="euph">Our Mission &amp; Vision Statement</span><span class="plain">Doc. 01 — The Founding Document</span></div>
+      <span class="m">Verbatim · unamended · meant</span>
+    </div>
+    <div class="col">
+      <div class="manifesto">
+        <p>forward deployment roles, companies and investments are ramping up all over the world at pace.<sup><a href="#n1">1</a></sup></p>
+        <p>this is not just a new buzzword but a real shift.</p>
+        <p>the futures we are seeking to build right now - whether we are a tech platform looking to drive adoption, an activist looking to create a new kind of politics<sup><a href="#n2">2</a></sup>, or artists trying to find a new creative language - are not plug and play to the old models.</p>
+        <p>instead we are all looking for ways to leverage new ideas, new technologies, new communities of people to create new things. Then we want to see if we can find a way to rebuild our institutions and old world around these little diamonds of newness.</p>
+        <p>this is why forward deployment is the future of digital transformation but is not only that. forward deployment is a new way of thinking about how we build what is next.</p>
+        <p>Whilst it may have been invented by Palantir<sup><a href="#n3">3</a></sup>, it is surely too important to be left purely to them.</p>
+        <p class="end">How do leaders, creatives, changemakers drive forward deployment now? in their own organisations, work, and movements?</p>
+      </div>
+      <div class="notes">
+        <div class="nl">Notes</div>
+        <div class="note" id="n1"><b>1</b><div>The <i>Financial Times</i> reports interest in hiring forward deployed engineers has risen roughly 800% since January 2025. Sundar Pichai and Aaron Levie have both named it the most in-demand tech hire of 2026 — one of the few tracks still scaling while the wider sector cuts. Now an institutional bet: Salesforce committed to a team of around 1,000; Google Cloud folded forward-deployed placement into a $750m partner-ecosystem commitment; Accenture launched a practice with Microsoft in March 2026; EY launched a global practice in April 2026, part of more than $1bn invested in its AI capability.</div></div>
+        <div class="note" id="n2"><b>2</b><div>The political version has a name: <i>prefigurative politics</i> — building the new society within the shell of the old, creating counter-institutions in practice and only then building the organisations to transform dominant ones. From anarchist and Gandhian roots through Occupy and the Indignados into transition towns and energy collectives; mapped by Luke Yates and in Paul Raekstad's <i>Prefigurative Politics: Building Tomorrow Today</i>. Identical move: build the new thing in reality first, retrofit institutions after.</div></div>
+        <div class="note" id="n3"><b>3</b><div>Palantir built much of its multi-billion-dollar business on the forward deployed software engineer model. It is too important to leave purely to them because the model has escaped: OpenAI, Anthropic, Cohere and Datadog now hire forward-deployed roles at unprecedented rates.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="close-blk">
+  <div class="wrap">
+    <div class="q">How do leaders, creatives &amp; changemakers drive forward deployment <span class="r">now?</span></div>
+    <div class="nomember"><s>Apply for membership</s> &nbsp;there is no membership. there is a Register and a body of work.</div>
+    <div class="sub" id="subForm">
+      <input id="subInput" placeholder="email or handle — receive the Register" aria-label="follow">
+      <button id="subBtn">Enlist</button>
+    </div>
+    <div class="subok" id="subOk">// LOGGED. working draft — nothing is sent or stored. the Institute keeps no records of its readers, on principle.</div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="colophon">
+      <span>The Institute of Forward Deployment — Human-in-Residence: <a href="#">@nicksherrard</a></span>
+      <span>Edition 01 · working draft · borrowed form, returned to sender</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  function esc(s){var d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML;}
+  function srcHTML(s){ // turn bare urls into links inside the sources string
+    return esc(s).replace(/(https?:\/\/[^\s)]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');
+  }
+  function renderEdition(ed){
+    var h='<div class="edition"><div class="ed-head"><span class="et">Edition No. '+String(ed.number).padStart(2,'0')+'</span>'+
+      '<span class="em">'+esc(ed.week||'')+' · filed by the Permanent Secretary'+(ed.countersigned===false?' · UNSIGNED':' · countersigned: N. Sherrard')+'</span></div><div class="ed-body">';
+    (ed.dispatches||[]).forEach(function(d){
+      h+='<div class="dispatch"><div class="dh">'+esc(d.desk||'')+'</div><h4>'+esc(d.title||'')+'</h4>'+
+         '<div class="body">'+esc(d.body||'')+'</div>'+
+         (d.sources?'<div class="src">'+srcHTML(d.sources)+'</div>':'')+
+         (d.note?'<div class="dnote">'+esc(d.note)+'</div>':'')+'</div>';
+    });
+    return h+'</div></div>';
+  }
+
+  var archList=document.getElementById('archList');
+  function archRow(num,week,title,note,anchor){
+    var a=document.createElement('a');a.className='arow';a.href=anchor||'#register';
+    a.innerHTML='<span class="ae">No. '+String(num).padStart(2,'0')+'</span>'+
+      '<div><h4>'+esc(title)+'</h4><p>'+esc(week)+'</p></div>'+
+      '<span class="as">'+esc(note||'Filed')+'</span>';
+    return a;
+  }
+  function renderArchive(eds){
+    archList.innerHTML='';
+    archList.appendChild(archRow(1,'Week of 19 May 2026','The disease takes equity in the cure','● Issued','#ed01'));
+    (eds||[]).slice().sort(function(a,b){return (b.number||0)-(a.number||0);}).forEach(function(ed){
+      if(!ed||ed.number===1)return;
+      var t=(ed.dispatches&&ed.dispatches[0]&&ed.dispatches[0].title)||('Edition '+ed.number);
+      archList.appendChild(archRow(ed.number,ed.week||'',t,'Filed','#register'));
+    });
+  }
+  renderArchive([]);
+
+  // production: pull editions.json (committed by the agent on Netlify). Fails silently as a standalone file.
+  var mount=document.getElementById('register-mount');
+  fetch('editions.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(list){
+    if(!Array.isArray(list)||!list.length)return;
+    var extra=list.filter(function(e){return e&&e.number!==1;});
+    extra.slice().sort(function(a,b){return (b.number||0)-(a.number||0);}).forEach(function(ed){
+      mount.insertAdjacentHTML('afterbegin',renderEdition(ed));
+    });
+    renderArchive(extra);
+  }).catch(function(){});
+
+  // preview tool (session only)
+  var rmsg=document.getElementById('rmsg');
+  document.getElementById('edFile').addEventListener('click',function(){
+    var raw=document.getElementById('edInput').value.trim();
+    if(!raw){rmsg.textContent='// nothing submitted.';return;}
+    var ed;try{ed=JSON.parse(raw);}catch(e){rmsg.textContent='// rejected: not valid JSON.';return;}
+    if(!ed.number||typeof ed.number!=='number'){rmsg.textContent='// rejected: an edition needs a numeric "number".';return;}
+    if(!Array.isArray(ed.dispatches)||!ed.dispatches.length){rmsg.textContent='// rejected: an edition needs a non-empty "dispatches" array.';return;}
+    mount.insertAdjacentHTML('afterbegin',renderEdition(ed));
+    var t=(ed.dispatches[0]&&ed.dispatches[0].title)||('Edition '+ed.number);
+    archList.appendChild(archRow(ed.number,ed.week||'',t,'Preview','#register'));
+    rmsg.textContent='// PREVIEWED above. to publish for real, commit it to editions.json (see manual).';
+  });
+
+  document.getElementById('subBtn').addEventListener('click',function(){
+    document.getElementById('subForm').style.display='none';
+    document.getElementById('subOk').style.display='block';
+  });
+})();
+</script>
+</body>
+</html>
