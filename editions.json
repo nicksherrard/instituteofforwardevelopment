@@ -1,0 +1,30 @@
+[
+  {
+    "number": 1,
+    "week": "Week of 19 May 2026",
+    "countersigned": true,
+    "dispatches": [
+      {
+        "desk": "Desk E — Economic Impact",
+        "title": "The disease takes equity in the cure: a $4bn deployment company, and a 42-fold role",
+        "body": "OpenAI this week launched the OpenAI Deployment Company, a roughly four-billion-dollar vehicle to embed forward deployed engineers inside enterprises, backed by a consortium of nineteen investment, consulting and integration firms — led by TPG, with Bain Capital, Advent and Brookfield, and with Bain & Company, Capgemini and McKinsey among the partners — and seeded by the acquisition of consultancy Tomoro and roughly 150 of its engineers. Google is carrying over 1,500 open FDE postings with published bands reaching the mid-$200,000s; Anthropic's expansion is routing part of a $30bn raise toward customer-embedded teams. LinkedIn's data has forward deployed engineering as the fastest-growing AI-created role — up 42-fold from 2023 to 2025, against 13-fold for AI engineers — even as the wider 2026 labour market sits frozen. UK contractor desks report day rates reaching £2,000.",
+        "sources": "SOURCES — OpenAI https://openai.com/index/openai-launches-the-deployment-company/ · The New Stack https://thenewstack.io/forward-deployed-engineer-fde-openai-google/ · Computerworld https://www.computerworld.com/article/4171867/ · Metaintro https://www.metaintro.com/blog/forward-deployed-engineer-most-in-demand-tech-job-2026 · ContractorUK https://www.contractoruk.com/news/what-is-a-forward-deployed-engineer-and-are-fde-jobs-for-it-contractors-ripe",
+        "note": "the consultancies that sold a decade of un-deployable software are now founding investors in the company built to deploy it. the disease has acquired equity in the cure and will report it as a growth segment."
+      },
+      {
+        "desk": "Desk I — Innovation",
+        "title": "The bottleneck moved: novelty is now made on site, not at headquarters",
+        "body": "The week's announcements describe the same relocation of where new things are made. Google frames its forward deployed engineers not as sales support but as builders expected to code, debug and ship bespoke agentic systems inside the customer's own environment. OpenAI's stated remit for its deployment engineers is to redesign organisational infrastructure and critical workflows around frontier models and harden the result into durable systems. Industry analysts covering the shift argue the binding constraint has moved from training larger models to integrating them into how a large organisation actually works — with the embedded engineer as that integration layer. A recurring observation in the commentary: problems that sat unsolved in slide decks for years are being closed in weeks, and the engineers doing it are well placed to leave and found companies of their own.",
+        "sources": "SOURCES — The New Stack https://thenewstack.io/forward-deployed-engineer-fde-openai-google/ · OpenAI https://openai.com/index/openai-launches-the-deployment-company/ · Computerworld, analyst J. Gold https://www.computerworld.com/article/4171867/",
+        "note": "\"redesign the organisation around the new thing, then harden it\" is the founding document, paragraph four, reprinted as a vendor press release. they have discovered prefiguration and filed it under go-to-market."
+      },
+      {
+        "desk": "Desk Φ — Efficiency Gains",
+        "title": "Shelfware, formally diagnosed",
+        "body": "The efficiency case being made this week is, bluntly, that most enterprise AI has not worked. The recurring claim across the reporting is that the large majority of enterprise AI projects fail to deliver meaningful value, stalled by weak vision, missing talent and underestimated integration. Analysts describe the forward deployed engineer as the corrective — outcome-focused operators brought in to make deployments land rather than to write more code — and, in effect, the hire that decides whether an AI investment becomes revenue or shelfware. The vendors' own framing is a faster path from use-case selection to production. The efficiency gain, in other words, is not a new capability; it is the recovery of value already bought and left switched off.",
+        "sources": "SOURCES — ContractorUK https://www.contractoruk.com/news/what-is-a-forward-deployed-engineer-and-are-fde-jobs-for-it-contractors-ripe · Computerworld https://www.computerworld.com/article/4171867/ · Metaintro https://www.metaintro.com/blog/forward-deployed-engineer-most-in-demand-tech-job-2026 · OpenAI https://openai.com/index/openai-launches-the-deployment-company/",
+        "note": "the industry sold the shelf, sold the thing to put on the shelf, and is now selling the person who takes it back off the shelf. three invoices, one cardboard box."
+      }
+    ]
+  }
+]
